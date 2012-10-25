@@ -2,3 +2,7 @@
 # Netbeans project files
 #
 /nbproject
+#
+# PHPStorm project files
+#
+/.idea
