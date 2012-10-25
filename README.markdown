@@ -1,3 +1,8 @@
+Vladimir Fishchenko updates:
+
+* Add show wall time near link to profiler output
+* Remove ? in the end of redirect url when you add _profile to GET request
+
 This branch/clone/whatever git calls it of the official Facebook GUI does a few things:
 
 * It includes a header.php document you can use with PHP's 
