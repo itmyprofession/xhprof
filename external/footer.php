@@ -8,7 +8,18 @@ if (extension_loaded('xhprof') && $_xhprof['doprofile'] === true) {
     $xhprof_data = xhprof_disable();
     $xhprof_runs = new XHProfRuns_Default();
     $run_id = $xhprof_runs->save_run($xhprof_data, $profiler_namespace, null, $_xhprof);
-    if ($_xhprof['display'] === true && PHP_SAPI != 'cli') {
+
+    /**
+     * check if ajax - do not show a link to profiler output
+     */
+    $ajax = false;
+    if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
+            $ajax = true;
+        }
+    }
+
+    if ($_xhprof['display'] === true && PHP_SAPI != 'cli' && !$ajax) {
         // url to the XHProf UI libraries (change the host name and path)
         $profiler_url = sprintf($_xhprof['url'] . '/index.php?run=%s&source=%s', $run_id, $profiler_namespace);
         $wt = sprintf(' (%0.3f sec)', floatval($xhprof_data['main()']['wt']) / 1000000);

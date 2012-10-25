@@ -1,7 +1,8 @@
 Vladimir Fishchenko updates:
 
-* Add show wall time near link to profiler output
+* Add showing wall time near link to profiler output
 * Remove ? in the end of redirect url when you add _profile to GET request
+* Do not show profiler output link if it is ajax request (XMLHttpRequest)
 
 This branch/clone/whatever git calls it of the official Facebook GUI does a few things:
 
